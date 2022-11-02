@@ -77,7 +77,7 @@ class PublicUserApiTest(TestCase):
 
         res = self.client.post(TOKEN_URL, payload)
 
-        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn('token', res.data)
 
     def test_create_token_bad_cred(self):
@@ -146,5 +146,5 @@ class PrivateUserApiTests(TestCase):
         res = self.client.patch(ME_URL, payload)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(res.data.name, payload['name'])
+        self.assertEqual(res.data['name'], payload['name'])
         self.assertTrue(self.user.check_password(payload['password']))
