@@ -1,5 +1,4 @@
 from .views import CreateUserView, CreateTokenView, ManageUserView
-from rest_framework import routers
 from django.urls import path
 
 app_name = 'user'
