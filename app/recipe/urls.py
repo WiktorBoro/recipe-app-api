@@ -9,3 +9,4 @@ router = DefaultRouter(trailing_slash=False)
 router.register('', RecipeViews, basename='recipes')
 
 urlpatterns = router.urls
+# ok

@@ -1,10 +1,6 @@
 name: Update Branch Before Merge
 
-on:
-  pull_request:
-    branches:    
-      - 'main'
-    types: [created, edited]
+on: push
 
 jobs:
   update-before-merge:
@@ -16,10 +12,12 @@ jobs:
 
     - name: Update branch with changes from base
       run: |
-        git checkout main
+        git fetch origin
+        git checkout origin/main
         git pull origin main
         git checkout -
-        git merge --no-ff main -m "Merge changes from base branch"
+        git merge --no-ff $ origin/main -m "Merge changes from base branch"
+
 
         # Handle merge conflicts
         if [ $? -ne 0 ]; then
