@@ -3,7 +3,7 @@ name: Check Django Migrations
 on:
   pull_request:
     paths:
-      - '**/*.py'  # Adjust the path pattern based on your Django project structure
+      - 'app/**/*.py'  # Adjust the path pattern based on your Django project structure
 
 jobs:
   migration-check:
