@@ -1,7 +1,7 @@
 name: Update Branch Before Merge
 
 on:
-  push:
+  pull_request:
     branches-ignore:    
       - 'main'
 
