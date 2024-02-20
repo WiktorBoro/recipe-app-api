@@ -3,7 +3,6 @@ name: Check Django Migrations
 on:
   pull_request:
     paths:
-      - 'app/manage.py'
       - 'app/*/migrations/*.py'
 
 jobs:
