@@ -1,9 +1,10 @@
 name: Update Branch Before Merge
 
 on:
-  push:
-    branches-ignore:    
+  pull_request:
+    branches:    
       - 'main'
+    types: [created, edited]
 
 jobs:
   update-before-merge:
