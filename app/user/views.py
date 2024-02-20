@@ -20,4 +20,5 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
     authentication_classes = [authentication.TokenAuthentication]
 
     def get_object(self):
+        # oh no, changes!
         return self.request.user
