@@ -5,7 +5,7 @@ from django.contrib.auth.models import \
     BaseUserManager, \
     PermissionsMixin
 
-
+#test
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):

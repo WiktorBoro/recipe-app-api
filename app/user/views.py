@@ -21,4 +21,5 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         # och no, changes!!!!
+        # och no, changes!!!$$
         return self.request.user
