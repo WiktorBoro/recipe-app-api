@@ -16,10 +16,10 @@ jobs:
 
     - name: Update branch with changes from base
       run: |
-        git checkout main
+        git checkout origin/main
         git pull
         git checkout -
-        git merge --no-ff $ main -m "Merge changes from base branch"
+        git merge --no-ff $ origin/main -m "Merge changes from base branch"
 
 
         # Handle merge conflicts
