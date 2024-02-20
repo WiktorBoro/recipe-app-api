@@ -1,10 +1,6 @@
 name: Update Branch Before Merge
 
-on:
-  pull_request:
-    branches:    
-      - 'main'
-    types: [created, edited]
+on: push
 
 jobs:
   update-before-merge:
