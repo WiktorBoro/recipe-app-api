@@ -17,3 +17,4 @@ class RecipeViews(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+# w3e4yhwehb

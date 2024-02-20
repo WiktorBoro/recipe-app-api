@@ -1,9 +1,10 @@
 name: Update Branch Before Merge
 
 on:
-  push:
-    branches-ignore:    
+  pull_request:
+    branches:    
       - 'main'
+    types: [created, edited]
 
 jobs:
   update-before-merge:
@@ -19,6 +20,7 @@ jobs:
         git pull
         git checkout -
         git merge --no-ff $ main -m "Merge changes from base branch"
+
 
         # Handle merge conflicts
         if [ $? -ne 0 ]; then
