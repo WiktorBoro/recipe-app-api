@@ -3,7 +3,7 @@ name: Update Branch Before Merge
 on:
   pull_request:
     types:
-      - synchronize
+      - closed
 
 jobs:
   update-before-merge:
