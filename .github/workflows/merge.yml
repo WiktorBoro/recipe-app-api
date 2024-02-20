@@ -1,0 +1,29 @@
+name: Update Branch Before Merge
+
+on:
+  pull_request:
+    types:
+      - synchronize
+
+jobs:
+  update-before-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Update branch with changes from base
+      run: |
+        git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
+        git checkout ${{ github.base_ref }}
+        git pull origin ${{ github.base_ref }}
+        git checkout ${{ github.head_ref }}
+        git merge --no-ff ${{ github.base_ref }} -m "Merge changes from base branch"
+
+        # Handle merge conflicts
+        if [ $? -ne 0 ]; then
+          # Handle conflicts (e.g., use a merge tool, manual resolution, etc.)
+          # Then continue with the merge
+          git merge --continue
+        fi
