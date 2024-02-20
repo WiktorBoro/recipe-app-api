@@ -1,9 +1,9 @@
 name: Update Branch Before Merge
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches-ignore:    
+      - 'main'
 
 jobs:
   update-before-merge:
