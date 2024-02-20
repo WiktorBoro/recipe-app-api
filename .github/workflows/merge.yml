@@ -14,7 +14,7 @@ jobs:
       run: |
         git fetch origin
         git checkout origin/main
-        git pull
+        git pull origin main
         git checkout -
         git merge --no-ff $ origin/main -m "Merge changes from base branch"
 
