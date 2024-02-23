@@ -2,13 +2,19 @@ name: Manually rollback
 on:
   workflow_dispatch:
     inputs:
-      revision:
-        description: 'The revision to rollback to'
-        required: true
-
-      branch:
-        description: 'The branch that the rollback affects'
-        required: true
+      environment:
+        type: environment
+        description: Select the environment
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - foo
+        - bar
+        - baz
 
 jobs:
   Rollback:
