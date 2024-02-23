@@ -14,5 +14,4 @@ jobs:
       - uses: psf/black@stable
         with:
           options: "--check --verbose --exclude '^\\..*|^.*/migrations/.*|virtualenv/.*|.*\\.html$|.*\\.css$|.*\\.xml$|.*\\.yml'"
-          src: "./src"
           version: "~= 23.1.0"
