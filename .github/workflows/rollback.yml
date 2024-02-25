@@ -19,9 +19,12 @@ on:
 jobs:
   Rollback:
     runs-on: ubuntu-latest
+    env:
+      API_KEY: TEST_IP
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-           ref: ${{ github.event.inputs.branch }}
-           fetch-depth: 0
+      - name: aha
+        run: |
+          echo "Using API key: $API_KEY ${{ secrets.TEST_IP }}"
+ 
