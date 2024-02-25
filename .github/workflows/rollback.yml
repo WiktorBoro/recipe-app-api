@@ -9,7 +9,7 @@ on:
         type: boolean
         description: True or False
       choice:
-        type: choice
+        type: multi-choice
         description: Make a choice
         options:
         - foo
