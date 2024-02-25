@@ -14,7 +14,7 @@ on:
         options:
         - foo
         - bar
-        - baz
+        - TEST_IP
 
 jobs:
   Rollback:
@@ -26,5 +26,5 @@ jobs:
         uses: actions/checkout@v2
       - name: aha
         run: |
-          echo "Using API key: $API_KEY ${{ secrets.TEST_IP }}"
+          echo "Using API key: $API_KEY ${{ secrets[${{ inputs.choice }}] }}"
  
