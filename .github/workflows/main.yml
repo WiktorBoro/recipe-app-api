@@ -5,10 +5,11 @@ on:
     branches-ignore:
       - develop
       - master
+      - main
 jobs:
   migration-check:
     runs-on: ubuntu-latest
-    if: contains(${{ github.event.head_commit.message }}, , "merge branch")
+    if: contains("merge branch", ${{ github.event.head_commit.message }})
 
     steps:
     - name: Checkout code
