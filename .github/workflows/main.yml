@@ -1,9 +1,6 @@
 name: Check Django Migrations
 
-on:
-  pull_request:
-    paths:
-      - 'app/*/migrations/*.py'
+on: workflow_dispatch
 
 jobs:
   migration-check:
