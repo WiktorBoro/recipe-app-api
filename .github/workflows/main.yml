@@ -15,7 +15,7 @@ jobs:
         if [[ $(git log --format=%B -n 1 ${{ github.sha }}) == *"Merge branch"* ]]; then
           echo "Commit message matches."
         else
-          exit 78  # Exit code 78 will stop the workflow without failing it.
+          exit 1
         fi
 
     - name: Checkout code
