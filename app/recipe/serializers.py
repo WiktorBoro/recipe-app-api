@@ -12,7 +12,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     # def create(self, validated_data):
     #     recipe = Recipe.objects.create(**validated_data)
     #     return recipe
-    #
+    ####
     # def update(self, instance, validated_data):
     #     recipe = super().update(instance, validated_data)
     #
