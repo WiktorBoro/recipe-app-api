@@ -1,6 +1,6 @@
 name: Update Branch Before Merge
 
-on: push
+on: workflow_dispatch
 
 jobs:
   update-before-merge:
