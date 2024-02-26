@@ -1,10 +1,6 @@
 name: Update Branch Before Merge
 
-on:
-  pull_request:
-    branches:    
-      - 'main'
-    types: [created, edited]
+on: push
 
 jobs:
   update-before-merge:
@@ -16,12 +12,11 @@ jobs:
 
     - name: Update branch with changes from base
       run: |
-        git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
-        git checkout ${{ github.base_ref }}
-        git pull origin ${{ github.base_ref }}
-        git checkout ${{ github.head_ref }}
-        git merge --no-ff ${{ github.base_ref }} -m "Merge changes from base branch"
-
+        git checkout main
+        git pull origin main
+        git checkout -
+        git merge --no-ff main -m "Merge changes from base branch"
+        ${{ secrets.DEVELOP_IP }}
         # Handle merge conflicts
         if [ $? -ne 0 ]; then
           # Handle conflicts (e.g., use a merge tool, manual resolution, etc.)

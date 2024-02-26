@@ -1,0 +1,30 @@
+name: Manually rollback
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: multi-choice
+        description: Make a choice
+        options:
+        - foo
+        - bar
+        - TEST_IP
+
+jobs:
+  Rollback:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: TEST_IP
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: aha
+        run: |
+          echo "Using API key: $API_KEY ${{ secrets[${{ inputs.choice }}] }}"
+ 
