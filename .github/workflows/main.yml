@@ -11,7 +11,7 @@ env:
 jobs:
   migration-check:
     runs-on: ubuntu-latest
-    if: env.IS_MERGE_COMMIT == 'true'
+    if: $IS_MERGE_COMMIT == 'true'
 
     steps:
     - name: Checkout code
