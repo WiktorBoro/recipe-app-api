@@ -1,6 +1,6 @@
 name: Check Django Migrations
 
-on: workflow_dispatch
+on: merge_group
 
 jobs:
   migration-check:
