@@ -20,11 +20,13 @@ jobs:
   Rollback:
     runs-on: ubuntu-latest
     env:
-      API_KEY: TEST_IP
+      API_KEY: ${{ secrets.TEST_IP }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: aha
         run: |
-          echo "Using API key: $API_KEY ${{ secrets[${{ inputs.choice }}] }}"
+          echo "Using API key: $API_KEY"
+          echo ${API_KEY}
+          
  
