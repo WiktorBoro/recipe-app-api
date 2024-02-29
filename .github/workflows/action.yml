@@ -1,0 +1,7 @@
+name: ACTION
+
+on: workflow_dispatch
+
+jobs:
+  create_files:
+   uses: ./.github/workflows/create_files.yml
