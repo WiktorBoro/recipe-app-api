@@ -1,0 +1,50 @@
+name: Choose Clients To Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      client1:
+        description: 'Deploy Client 1'
+        required: false
+        default: false
+        type: boolean
+      client2:
+        description: 'Deploy Client 2'
+        required: false
+        default: false
+        type: boolean
+      client3:
+        description: 'Deploy Client 3'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  choose-clients:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set selected clients
+        id: clients
+        run: |
+          clients=""
+          if [ "${{ github.event.inputs.client1 }}" == "true" ]; then clients="$clients Client1"; fi
+          if [ "${{ github.event.inputs.client2 }}" == "true" ]; then clients="$clients Client2"; fi
+          if [ "${{ github.event.inputs.client3 }}" == "true" ]; then clients="$clients Client3"; fi
+          echo "::set-output name=clients::$clients"
+
+      - name: Trigger deploy actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLIENT1_IP: ${{ secrets.CLIENT1_IP }}
+          CLIENT2_IP: ${{ secrets.CLIENT2_IP }}
+          CLIENT3_IP: ${{ secrets.CLIENT3_IP }}
+        run: |
+          for client in ${{ steps.clients.outputs.clients }}
+          do
+            if [ "$client" == "Client1" ]; then server_ip="${CLIENT1_IP}"; fi
+            if [ "$client" == "Client2" ]; then server_ip="${CLIENT2_IP}"; fi
+            if [ "$client" == "Client3" ]; then server_ip="${CLIENT3_IP}"; fi
+
+            # Trigger the deploy-client workflow with the server IP as an input
+            gh workflow run deploy-client.yml -f client_name=$client -f server_ip=$server_ip
+          done
